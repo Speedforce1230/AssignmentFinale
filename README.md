@@ -27,5 +27,5 @@ Welcome to my app. This is for an assignment. This is my first ever time making 
    npm run start  
    ```
      
-DEMO VIDEO  
+DEMO VIDEO(SORRY FOR THE WEIRD FLASHING, EPILEPSY WARNING!!!)  
 [![Expo App Demo](https://img.youtube.com/vi/MaXWqg6LTi4/hqdefault.jpg)](https://www.youtube.com/watch?v=MaXWqg6LTi4)
