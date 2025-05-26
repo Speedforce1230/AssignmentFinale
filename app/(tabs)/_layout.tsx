@@ -30,9 +30,9 @@ export default function TabLayout() {
                     options={{
                         title: "Sign in",
                         tabBarIcon: ({ color }) => (
-                            <IconSymbol
+                            <Ionicons
                                 size={28}
-                                name="apple.logo"
+                                name="log-in-outline"
                                 color={color}
                             />
                         ),
@@ -43,9 +43,9 @@ export default function TabLayout() {
                     options={{
                         title: "Next App",
                         tabBarIcon: ({ color }) => (
-                            <Ionicons
+                            <IconSymbol
                                 size={28}
-                                name="log-in-outline"
+                                name="house.fill"
                                 color={color}
                             />
                         ),

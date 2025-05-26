@@ -17,13 +17,14 @@ android/
 *.p12
 *.key
 *.mobileprovision
+/.env.local
 hooks/sendPushNotification.ts
 app/(tabs)/push.tsx
-next-js-assignment/next-env.d.ts
-next-js-assignment/README.md
-next-js-assignment/.env.local
-next-js-assignment/node_modules
-next-js-assignment/.next
+next/next-env.d.ts
+next/README.md
+next/.env.local
+next/node_modules
+next/.next
 # Metro
 .metro-health-check*
 

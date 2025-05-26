@@ -1,12 +1,20 @@
+import {
+    getToken,
+    requestUserPermission,
+} from "@/components/firebaseComponents/PushNotification";
 import { GoogleSigninButton } from "@react-native-google-signin/google-signin";
+import { useEffect } from "react";
 import { Button, Text, View } from "react-native";
 import { useAuth } from "../../components/firebaseComponents/AuthProvider";
-
 interface SignInScreenProps {
     navigation: React.FC<{ navigation: any }>;
 }
 export default function SignInScreen({ navigation }: SignInScreenProps) {
     const { user, signIn, signOutUser } = useAuth();
+    useEffect(() => {
+        getToken();
+        requestUserPermission();
+    }, []);
     return (
         <View
             style={{
