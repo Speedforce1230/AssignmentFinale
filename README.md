@@ -28,4 +28,4 @@ Welcome to my app. This is for an assignment. This is my first ever time making 
    ```
      
 DEMO VIDEO  
-[![Expo App Demo](https://img.youtube.com/vi/MaXWqg6LTi4/maxresdefault.jpg)](https://www.youtube.com/watch?v=MaXWqg6LTi4)
+[![Expo App Demo](https://img.youtube.com/vi/MaXWqg6LTi4/hqdefault.jpg)](https://www.youtube.com/watch?v=MaXWqg6LTi4)
