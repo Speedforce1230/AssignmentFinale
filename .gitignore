@@ -2,7 +2,6 @@
 
 # dependencies
 node_modules/
-
 # Expo
 .expo/
 .vscode/
@@ -18,7 +17,13 @@ android/
 *.p12
 *.key
 *.mobileprovision
-
+hooks/sendPushNotification.ts
+app/(tabs)/push.tsx
+next-js-assignment/next-env.d.ts
+next-js-assignment/README.md
+next-js-assignment/.env.local
+next-js-assignment/node_modules
+next-js-assignment/.next
 # Metro
 .metro-health-check*
 
