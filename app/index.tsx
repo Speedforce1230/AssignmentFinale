@@ -1,4 +1,9 @@
-import auth, { getAuth, onAuthStateChanged } from "@react-native-firebase/auth";
+import {
+    getAuth,
+    GoogleAuthProvider,
+    onAuthStateChanged,
+    signInWithCredential,
+} from "@react-native-firebase/auth";
 import {
     GoogleSignin,
     GoogleSigninButton,
@@ -7,29 +12,30 @@ import {
 } from "@react-native-google-signin/google-signin";
 import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
-const Index = () => {
+GoogleSignin.configure({
+    webClientId:
+        "184134956461-i32io746jvnququa9bo1oj40vibpm3b0.apps.googleusercontent.com",
+});
+const authState = getAuth();
+export default function Index() {
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState(null);
-    GoogleSignin.configure({
-        webClientId:
-            "184134956461-i32io746jvnququa9bo1oj40vibpm3b0.apps.googleusercontent.com",
-    });
-
+    const [signingIn, setSigningIn] = useState(false);
     const signIn = async () => {
+        if (signingIn) return;
+        setSigningIn(true);
         try {
             await GoogleSignin.hasPlayServices({
                 showPlayServicesUpdateDialog: true,
             });
             console.log("Signing In");
             // Get the users ID token
-            const response = await GoogleSignin.signIn();
-            console.log("awaited");
-            console.log("response", response);
-            const credential = auth.GoogleAuthProvider.credential(
-                response.data?.idToken
-            );
+            const GoogleUser = await GoogleSignin.signIn();
+            const idToken = GoogleUser.idToken;
+            console.log(idToken);
+            const credential = GoogleAuthProvider.credential(idToken);
 
-            return auth().signInWithCredential(credential);
+            await signInWithCredential(authState, credential);
         } catch (error) {
             if (isErrorWithCode(error)) {
                 switch (error.code) {
@@ -43,17 +49,13 @@ const Index = () => {
             }
         }
     };
-    const handleAuthStateChanged = (user) => {
-        setUser(user);
-        if (initializing) setInitializing(false);
-    };
     useEffect(() => {
-        const subscriber = onAuthStateChanged(
-            getAuth(),
-            handleAuthStateChanged
-        );
+        const subscriber = onAuthStateChanged(authState, (user) => {
+            setUser(user);
+            if (initializing) setInitializing(false);
+        });
         return subscriber;
-    }, []);
+    }, [initializing]);
     if (initializing) return null;
     if (!user) {
         return (
@@ -73,5 +75,4 @@ const Index = () => {
             <Text>Congrats you are logged in: {user.email}</Text>
         </View>
     );
-};
-export default Index;
+}
